@@ -23,4 +23,4 @@ jobs:
       with:
         server: ftp.tshaworx.co.za
         username: moses@weatherapp.tshaworx.co.za
-        password: ${{ DEPLOYMENT.!!!Pass@2020 }}
+        password: ${{ Afrihost.!!!Pass@2020 }}
