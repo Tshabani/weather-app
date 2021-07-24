@@ -1,8 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import { WeatherResponse } from "../interfaces/weatherResponse";
-import useGeoLocation from "../hooks/useGeoLocation";
 import Spinner from "../components/Spinner";
-
+import { useGeolocation } from "rooks";
 export interface WeatherConfig {
 	weather?: WeatherResponse;
 	onRefresh: () => void;
@@ -14,10 +13,10 @@ export const WeatherContext = createContext<WeatherConfig | undefined>(
 
 const WeatherContextProvider: React.FunctionComponent = (props) => {
 	const [weather, setWeather] = useState<WeatherConfig | undefined>();
-	const location = useGeoLocation();
+	const location = useGeolocation();
 
 	useEffect(() => {
-		if (location) {
+		if (location && !location.isError) {
 			fetchWeather();
 		} else {
 			alert(
@@ -28,7 +27,7 @@ const WeatherContextProvider: React.FunctionComponent = (props) => {
 
 	const fetchWeather = () => {
 		fetch(
-			`https://api.openweathermap.org/data/2.5/weather?lat=${location?.coordinates?.lat}&lon=${location?.coordinates?.lng}&units=metric&appid=53f9d8e4213222cf517d86dc406d67fc`
+			`https://api.openweathermap.org/data/2.5/weather?lat=${location?.lat}&lon=${location?.lng}&units=metric&appid=53f9d8e4213222cf517d86dc406d67fc`
 		)
 			.then((response) => {
 				return response.json();

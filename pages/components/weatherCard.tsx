@@ -6,11 +6,7 @@ export interface WeatherCardProps {}
 
 const WeatherCard: React.FC<WeatherCardProps> = () => {
 	const data = useContext(WeatherContext);
-	const { name, main, weather } = data as any;
-
-	useEffect(() => {
-		console.log(weather && weather[0]);
-	}, [weather]);
+	const { main, weather } = data as any;
 
 	return (
 		<section className="w-100 container flex justify-center text-center mx-auto mt-10">
