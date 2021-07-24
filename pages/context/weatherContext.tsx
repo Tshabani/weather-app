@@ -34,6 +34,7 @@ const WeatherContextProvider: React.FunctionComponent = (props) => {
 	};
 
 	const handleRefresh = () => {
+		setWeather(undefined);
 		if (location) {
 			fetchWeather();
 		}
@@ -41,7 +42,13 @@ const WeatherContextProvider: React.FunctionComponent = (props) => {
 
 	return (
 		<WeatherContext.Provider value={{ ...weather, onRefresh: handleRefresh }}>
-			{props.children}
+			{weather ? (
+				props.children
+			) : (
+				<span className="flex h-1 w-1">
+					<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>
+				</span>
+			)}
 		</WeatherContext.Provider>
 	);
 };

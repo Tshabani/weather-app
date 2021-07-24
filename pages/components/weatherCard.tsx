@@ -34,8 +34,8 @@ const WeatherCard: React.FC<WeatherCardProps> = () => {
 							weather && weather[0].icon
 						}@2x.png`}
 						alt="Landscape picture"
-						width={50}
-						height={50}
+						width={100}
+						height={100}
 					/>
 					<p>{weather && weather[0].description}</p>
 				</div>
