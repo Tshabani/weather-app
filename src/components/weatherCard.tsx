@@ -1,11 +1,17 @@
+/* eslint-disable @next/next/no-img-element */
 import { WeatherContext } from "../context/weatherContext";
-import React, { useContext } from "react";
-import Image from "next/image";
+import { useContext, useEffect } from "react";
 
 export interface WeatherCardProps {}
 
 const WeatherCard: React.FC<WeatherCardProps> = () => {
-	const data = useContext(WeatherContext);
+	const data: any = useContext(WeatherContext);
+	// const { weather, main } = data as any;
+
+	useEffect(() => {
+		console.log(data);
+	}),
+		[data];
 
 	return (
 		<section className="w-100 container flex justify-center text-center mx-auto mt-10">
@@ -14,28 +20,29 @@ const WeatherCard: React.FC<WeatherCardProps> = () => {
 					Weather: {data?.weather ? (data as any)?.weather[0].main : null}
 				</h1>
 				<h1>
-					Temperature: {data?.weather?.main?.temp} <sup>&deg;C</sup>{" "}
+					Temperature: {data?.main?.temp} <sup>&deg;C</sup>{" "}
 				</h1>
 				<h1>
-					Minimum Temperature: {data?.weather?.main?.temp_max}
+					Minimum Temperature: {data?.main?.temp_max}
 					<sup>&deg;C</sup>
 				</h1>
 				<h1>
-					Maximum Temperature: {data?.weather?.main?.temp_min}
+					Maximum Temperature: {data?.main?.temp_min}
 					<sup>&deg;C</sup>
 				</h1>
-				<h1>Humidity: {data?.weather?.main?.humidity}</h1>
-				<div className="info">
-					<Image
+				<h1>Humidity: {data?.main?.humidity}</h1>
+				<div className="info w-100 flex text-center justify-center">
+					<img
 						src={`https://openweathermap.org/img/wn/${
 							data?.weather && (data as any)?.weather[0].icon
 						}@2x.png`}
 						alt="Landscape picture"
 						width={100}
 						height={100}
+						className="text-center w-100"
 					/>
-					<p>{data?.weather && (data as any)?.weather[0].description}</p>
 				</div>
+				<p>{data?.weather && (data as any)?.weather[0].description}</p>
 			</div>
 		</section>
 	);

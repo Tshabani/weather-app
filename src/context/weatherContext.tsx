@@ -12,7 +12,7 @@ export const WeatherContext = createContext<WeatherConfig | undefined>(
 );
 
 const WeatherContextProvider: React.FunctionComponent = (props) => {
-	const [weather, setWeather] = useState<WeatherConfig>();
+	const [weatherData, setWeatherData] = useState<WeatherConfig>();
 	const location = useGeolocation();
 
 	useEffect(() => {
@@ -33,7 +33,7 @@ const WeatherContextProvider: React.FunctionComponent = (props) => {
 				return response.json();
 			})
 			.then((data) => {
-				setWeather((current) => data);
+				setWeatherData((current) => data);
 			})
 			.catch((error) => {
 				alert(error);
@@ -41,15 +41,16 @@ const WeatherContextProvider: React.FunctionComponent = (props) => {
 	};
 
 	const handleRefresh = () => {
-		setWeather(undefined);
+		setWeatherData(undefined);
 		if (location) {
 			fetchWeather();
 		}
 	};
 
 	return (
-		<WeatherContext.Provider value={{ ...weather, onRefresh: handleRefresh }}>
-			{weather ? props.children : <Spinner />}
+		<WeatherContext.Provider
+			value={{ ...weatherData, onRefresh: handleRefresh }}>
+			{weatherData ? props.children : <Spinner />}
 		</WeatherContext.Provider>
 	);
 };
