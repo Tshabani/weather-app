@@ -1,17 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import { WeatherContext } from "../context/weatherContext";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 export interface WeatherCardProps {}
 
 const WeatherCard: React.FC<WeatherCardProps> = () => {
 	const data: any = useContext(WeatherContext);
-	// const { weather, main } = data as any;
-
-	useEffect(() => {
-		console.log(data);
-	}),
-		[data];
 
 	return (
 		<section className="w-100 container flex justify-center text-center mx-auto mt-10">

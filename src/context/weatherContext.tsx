@@ -14,14 +14,15 @@ export const WeatherContext = createContext<WeatherConfig | undefined>(
 const WeatherContextProvider: React.FunctionComponent = (props) => {
 	const [weatherData, setWeatherData] = useState<WeatherConfig>();
 	const location = useGeolocation();
+	const isLocationValid = location && !location.isError;
 
 	useEffect(() => {
 		if (location && !location.isError) {
 			fetchWeather();
-		} else {
-			alert(
-				"There was a problem trying to get your location please fix your location and try again."
-			);
+		}
+		console.log(location);
+		if (location?.isError) {
+			alert("You must allow your location to continue");
 		}
 	}, [location]);
 
@@ -36,7 +37,9 @@ const WeatherContextProvider: React.FunctionComponent = (props) => {
 				setWeatherData((current) => data);
 			})
 			.catch((error) => {
-				alert(error);
+				alert(
+					"There was a problem trying to get your location please fix your location and try again."
+				);
 			});
 	};
 
