@@ -1,5 +1,5 @@
 import React from "react";
-import WeatherContextProvider from "./context/weatherContext";
+import WeatherContextProvider from "../context/weatherContext";
 import HomeScreen from "./homeScreen/HomeScreen";
 
 export default function Home() {

@@ -12,7 +12,7 @@ export const WeatherContext = createContext<WeatherConfig | undefined>(
 );
 
 const WeatherContextProvider: React.FunctionComponent = (props) => {
-	const [weather, setWeather] = useState<WeatherConfig | undefined>();
+	const [weather, setWeather] = useState<WeatherConfig>();
 	const location = useGeolocation();
 
 	useEffect(() => {

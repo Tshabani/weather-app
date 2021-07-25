@@ -1,36 +1,36 @@
 {
-  "name": "weather-app",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "build:tailwind": "tailwindcss build -i styles/tailwind.scss -o styles/tailwind.output.scss",
-    "prestart": "npm run build:tailwind",
-    "prebuild": "cross-env NODE_ENV=production npm run build:tailwind",
-    "predev": "npm run build:tailwind",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "antd": "^4.16.8",
-    "axios": "^0.21.1",
-    "cross-env": "^7.0.3",
-    "next": "11.0.1",
-    "react": "17.0.2",
-    "react-animation-loaders": "^1.0.10",
-    "react-dom": "17.0.2",
-    "rooks": "^5.3.0",
-    "styled-components": "^5.3.0"
-  },
-  "devDependencies": {
-    "@types/react": "17.0.14",
-    "autoprefixer": "^10.3.1",
-    "eslint": "7.31.0",
-    "eslint-config-next": "11.0.1",
-    "postcss": "^8.3.6",
-    "sass": "^1.35.2",
-    "tailwindcss": "^2.2.6",
-    "typescript": "4.3.5"
-  }
+	"name": "weather-app",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"build:tailwind": "tailwindcss build -i src/styles/tailwind.scss -o src/styles/tailwind.output.scss",
+		"prestart": "npm run build:tailwind",
+		"prebuild": "cross-env NODE_ENV=production npm run build:tailwind",
+		"predev": "npm run build:tailwind",
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"antd": "^4.16.8",
+		"axios": "^0.21.1",
+		"cross-env": "^7.0.3",
+		"next": "11.0.1",
+		"react": "17.0.2",
+		"react-animation-loaders": "^1.0.10",
+		"react-dom": "17.0.2",
+		"rooks": "^5.3.0",
+		"styled-components": "^5.3.0"
+	},
+	"devDependencies": {
+		"@types/react": "17.0.14",
+		"autoprefixer": "^10.3.1",
+		"eslint": "7.31.0",
+		"eslint-config-next": "11.0.1",
+		"postcss": "^8.3.6",
+		"sass": "^1.35.2",
+		"tailwindcss": "^2.2.6",
+		"typescript": "4.3.5"
+	}
 }
