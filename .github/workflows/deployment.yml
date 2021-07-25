@@ -25,3 +25,4 @@ jobs:
           server: ftp.tshaworx.co.za
           username: weatherapp@weatherapp.tshaworx.co.za
           password: ${{ secrets.Afrihost }}
+          local-dir: ./out/
